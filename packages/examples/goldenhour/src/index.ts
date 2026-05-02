@@ -1,3 +1,3 @@
-export { goldenhourAgent, CATALOG } from './agent.js'
-export { getProduct } from './catalog.js'
-export type { Product } from './catalog.js'
+export { goldenhourAgent, CATALOG } from './agent'
+export { getProduct } from './catalog'
+export type { Product } from './catalog'

@@ -2,7 +2,7 @@
 // Real cross-sell logic, real brand voice, real first-time buyer incentive.
 
 import { defineMerchantAgent } from 'merchant-agent'
-import { CATALOG, getProduct } from './catalog.js'
+import { CATALOG, getProduct } from './catalog'
 
 export const goldenhourAgent = defineMerchantAgent({
   name: 'GoldenHour Coffee',
