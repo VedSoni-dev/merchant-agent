@@ -117,6 +117,37 @@ pre code {
   margin-bottom: 24px;
 }
 
+.acronym-stack {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--serif);
+  font-weight: 600;
+  margin: 36px 0 28px 0;
+  letter-spacing: -0.01em;
+  flex-wrap: wrap;
+}
+
+.acronym-stack .ac-old {
+  color: var(--muted);
+  font-size: 30px;
+  text-decoration: line-through;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 2px;
+}
+
+.acronym-stack .ac-sep {
+  color: var(--rule);
+  font-size: 30px;
+}
+
+.acronym-stack .ac-new {
+  color: var(--accent);
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  margin-left: 4px;
+}
+
 .muted {
   color: var(--muted);
 }

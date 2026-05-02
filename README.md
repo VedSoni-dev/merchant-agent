@@ -3,11 +3,18 @@
 [![npm](https://img.shields.io/npm/v/merchant-agent.svg)](https://www.npmjs.com/package/merchant-agent)
 [![license](https://img.shields.io/badge/license-MIT-black.svg)](./LICENSE)
 
-> **OpenAI and Google built the agent cash register. They forgot the rest of the store.**
+> **SEO. GEO. AEO. AAO.**
+> The protocol for agent-to-agent optimization.
 
-When personal agents start doing the shopping, merchants lose every lever they spent a hundred years building: front-of-store placement, end caps, shelf talkers, upsell, brand story. ACP and UCP define how an agent finds a product and pays for it. They don't define how a merchant tells the agent why this matters, what to recommend with it, or what offer applies right now.
+SEO optimized content for crawlers. GEO got AI to cite your brand. AEO structured your content for answer engines. All three optimize for an **intermediary** that delivers something to a human.
 
-This is the missing layer. A one-page spec, an MIT-licensed TypeScript SDK, a live demo. Deploy it next to your ACP endpoint in 60 seconds.
+**AAO — agent-to-agent optimization — is different.** When a personal agent shops on behalf of a human, the agent *is* the customer. You're not trying to get cited or ranked. You're trying to win a conversation with another agent that controls the purchase decision. That requires optimizing your **own agent endpoint**, not your content.
+
+OpenAI and Google built the agent cash register (ACP, UCP, ChatGPT Instant Checkout). They forgot the rest of the store. When agents start doing the shopping, merchants lose every lever they spent a hundred years building: front-of-store placement, end caps, shelf talkers, upsell, brand story. The merchant's voice disappears.
+
+merchant-agent is the protocol that brings it back. A one-page spec, an MIT-licensed TypeScript SDK, a live demo. Deploy it next to your ACP endpoint in 60 seconds.
+
+> *"AAO" is a coined term. The acronym may or may not stick — but the discipline is real, and it needs a name. Use whatever you want; we just shipped the protocol it runs on.*
 
 - **Spec:** [SPEC.md](./SPEC.md)
 - **SDK:** [`packages/core`](./packages/core) → [`merchant-agent` on npm](https://www.npmjs.com/package/merchant-agent)
@@ -127,6 +134,19 @@ Buyer-agents read both. ACP for the cash register. merchant-agent for the rest o
 HEB's Action Alley generates an estimated 30% of basket lift through merchandising alone — the end-cap, the seasonal display, the impulse rack at the register. The agent web has zero version of any of this. When agents start doing the shopping, that 30% disappears. Merchants who deployed merchant-agent keep it. Merchants who didn't, watched their AOV flatten to whatever the agent picked first on price.
 
 This spec is intentionally tiny — three primitives, four endpoints, one weekend to deploy — so the long tail of merchants on WooCommerce, BigCommerce, Substack-shaped commerce, and custom stacks can ship it as fast as the Shopify+Etsy-Walmart consortium can.
+
+## The AAO category, summarized
+
+|  | SEO | GEO | AEO | **AAO** |
+| --- | --- | --- | --- | --- |
+| What you optimize | Content | Content | Content | **Your agent endpoint** |
+| Target | Crawler | LLM | Answer engine | **Another agent (the buyer)** |
+| Mode | Passive | Passive | Passive | **Active, conversational** |
+| Conversion event | Click | Citation | Featured snippet | **Purchase decision** |
+| Levers | Keywords, schema | Prompt-friendly content | Direct answers | **Recommendations, brand story, conditional offers** |
+| Measured by | Rank | Mention rate | Snippet rate | **Agent conversion rate, agent AOV** |
+
+SEO/GEO/AEO are about getting noticed. AAO is about getting bought. That is a fundamentally different stakes profile — higher leverage, harder to measure, dramatically more valuable per unit of effort.
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "merchant-agent",
   "version": "0.1.0",
-  "description": "The merchandising layer for the agentic web. A framework-agnostic TypeScript SDK for the merchant-agent v0.1 spec.",
+  "description": "The protocol for agent-to-agent optimization (AAO). Framework-agnostic TypeScript SDK for the merchant-agent v0.1 spec — cross-sell, brand-story, and conditional-offer primitives a merchant publishes for buyer-agents.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/server.js",

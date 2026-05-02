@@ -2,12 +2,12 @@ import type { ReactNode } from 'react'
 import './globals.css'
 
 export const metadata = {
-  title: 'merchant-agent — the merchandising layer for the agentic web',
+  title: 'merchant-agent — the protocol for agent-to-agent optimization (AAO)',
   description:
-    'OpenAI and Google built the agent cash register. They forgot the rest of the store. merchant-agent is the missing layer.',
+    'SEO. GEO. AEO. AAO. When personal agents do the shopping, they are the buyer. merchant-agent is the protocol that lets your store speak to them.',
   openGraph: {
-    title: 'merchant-agent',
-    description: 'The merchandising layer for the agentic web.',
+    title: 'merchant-agent — the AAO protocol',
+    description: 'SEO. GEO. AEO. AAO. The protocol for agent-to-agent optimization.',
     type: 'website',
   },
 }

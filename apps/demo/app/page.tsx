@@ -5,18 +5,34 @@ export default function Home() {
     <main className="container">
       <div className="eyebrow">merchant-agent · v0.1 · MIT</div>
 
-      <h1>OpenAI and Google built the agent cash register. They forgot the rest of the store.</h1>
+      <div className="acronym-stack">
+        <span className="ac-old">SEO</span>
+        <span className="ac-sep">·</span>
+        <span className="ac-old">GEO</span>
+        <span className="ac-sep">·</span>
+        <span className="ac-old">AEO</span>
+        <span className="ac-sep">·</span>
+        <span className="ac-new">AAO</span>
+      </div>
+
+      <h1>The protocol for agent-to-agent optimization.</h1>
 
       <p style={{ fontSize: '20px', color: 'var(--muted)', marginTop: '32px' }}>
-        When personal agents start doing the shopping, merchants lose every lever they spent a hundred years
-        building: front-of-store placement, end caps, shelf talkers, upsell, brand story. ACP and UCP define how
-        an agent finds a product and pays for it. They don&apos;t define how a merchant tells the agent why this
-        matters, what to recommend with it, or what offer applies right now.
+        SEO optimized content for crawlers. GEO got AI to cite your brand. AEO structured your content for
+        answer engines. All three optimize for an <em>intermediary</em> that delivers something to a human.
       </p>
 
       <p style={{ fontSize: '20px', color: 'var(--muted)' }}>
-        This is the missing layer. One-page spec. MIT-licensed TypeScript SDK. Live demo. Deploy it next to your
-        ACP endpoint in 60 seconds.
+        <strong>AAO is different.</strong> When a personal agent shops on behalf of a human, the agent <em>is</em>{' '}
+        the customer. You're not trying to get cited or ranked. You're trying to win a conversation with another
+        agent that controls the purchase decision. That requires optimizing your <em>own agent endpoint</em>, not
+        your content.
+      </p>
+
+      <p style={{ fontSize: '20px', color: 'var(--muted)' }}>
+        OpenAI and Google built the agent cash register (ACP, UCP, ChatGPT Instant Checkout). They forgot the
+        rest of the store. merchant-agent is the protocol that brings the merchant&apos;s voice back. One-page
+        spec. MIT-licensed SDK. Live demo. Deploy it next to your ACP endpoint in 60 seconds.
       </p>
 
       <div style={{ marginTop: '40px' }}>

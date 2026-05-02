@@ -2,9 +2,11 @@
 
 The TypeScript SDK for the [merchant-agent v0.1 spec](https://github.com/VedSoni-dev/merchant-agent).
 
-OpenAI and Google built the agent cash register. They forgot the rest of the store.
+**SEO. GEO. AEO. AAO.** The protocol for agent-to-agent optimization.
 
-This is the merchandising layer. Drop it next to your ACP / UCP endpoint so buyer-agents see merchant-controlled cross-sells, brand stories, and conditional offers — not just transactional metadata.
+When a personal agent shops on behalf of a human, the agent *is* the customer. SEO/GEO/AEO all optimize content for an intermediary. AAO optimizes the merchant's own agent endpoint to win conversations with the buyer-agent directly.
+
+OpenAI and Google built the agent cash register. They forgot the rest of the store. Drop merchant-agent next to your ACP / UCP endpoint so buyer-agents see merchant-controlled cross-sells, brand stories, and conditional offers — not just transactional metadata.
 
 ## Install
 

@@ -50,14 +50,18 @@ export default function DemoPage() {
 
   return (
     <main className="wide-container">
-      <div className="eyebrow">live a/b — buyer agent shopping at goldenhour coffee</div>
+      <div className="eyebrow">live a/b — aao in action</div>
 
       <h1 style={{ fontSize: '40px', marginBottom: '16px' }}>Same product. Two flows.</h1>
 
+      <p className="muted" style={{ marginBottom: '12px', fontSize: '18px' }}>
+        A buyer-agent visits goldenhour.coffee for a 12oz bag of pour-over.
+      </p>
       <p className="muted" style={{ marginBottom: '40px', fontSize: '18px' }}>
-        A buyer-agent visits goldenhour.coffee for a 12oz bag of pour-over. On the left: it scrapes the HTML and
-        picks based on price. On the right: it finds the merchant-agent endpoint, gets cross-sell, brand story,
-        and a first-time-buyer offer.
+        <strong style={{ color: 'var(--text)' }}>Left:</strong> scrape flow. Agent parses HTML, picks cheapest.
+        Standard SEO/GEO-style content optimization wins you nothing here.{' '}
+        <strong style={{ color: 'var(--text)' }}>Right:</strong> AAO flow. Agent finds the merchant-agent
+        endpoint, gets cross-sell, brand story, first-time-buyer offer. Watch what merchant voice does to AOV.
       </p>
 
       <div className="split">

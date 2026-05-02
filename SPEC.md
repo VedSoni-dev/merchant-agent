@@ -1,6 +1,10 @@
 # merchant-agent — Specification v0.1
 
-A merchandising layer for the agentic web. Designed to be deployed alongside transactional protocols (ACP, UCP) so buyer-agents see merchant-controlled product recommendations, brand stories, and conditional offers — not just transactional metadata.
+The protocol for **agent-to-agent optimization (AAO)**.
+
+SEO/GEO/AEO optimize content for an intermediary that delivers something to a human. AAO is structurally different: when a personal agent shops on behalf of a human, the agent is itself the customer. The optimization target is no longer an intermediary — it is the buyer. That requires a new kind of endpoint that merchants can publish to *speak* to visiting agents directly.
+
+merchant-agent defines that endpoint. It is designed to be deployed alongside transactional protocols (ACP, UCP) so buyer-agents see merchant-controlled product recommendations, brand stories, and conditional offers — not just transactional metadata.
 
 This document is the single source of truth for v0.1. The reference implementation lives at [`packages/core`](./packages/core).
 
