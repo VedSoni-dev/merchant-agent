@@ -1,6 +1,6 @@
 # merchant-agent
 
-The TypeScript SDK for the [merchant-agent v0.1 spec](https://github.com/merchant-agent/spec).
+The TypeScript SDK for the [merchant-agent v0.1 spec](https://github.com/VedSoni-dev/merchant-agent).
 
 OpenAI and Google built the agent cash register. They forgot the rest of the store.
 
@@ -96,7 +96,7 @@ The client tries all three in order.
 
 ## Spec
 
-The full v0.1 specification is at [github.com/merchant-agent/spec/blob/main/SPEC.md](https://github.com/merchant-agent/spec/blob/main/SPEC.md).
+The full v0.1 specification is at [github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md](https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md).
 
 ## License
 

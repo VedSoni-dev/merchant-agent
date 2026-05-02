@@ -1,5 +1,5 @@
 // merchant-agent v0.1 — type definitions
-// Specification: https://github.com/merchant-agent/spec
+// Specification: https://github.com/VedSoni-dev/merchant-agent
 
 export const SPEC_VERSION = '0.1' as const
 export const MEDIA_TYPE = 'application/merchant-agent' as const

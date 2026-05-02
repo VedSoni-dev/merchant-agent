@@ -26,7 +26,7 @@ Thanks for considering a contribution. v0.1 is intentionally locked at four endp
 ## Local dev
 
 ```bash
-git clone https://github.com/merchant-agent/spec
+git clone https://github.com/VedSoni-dev/merchant-agent
 cd spec
 pnpm install
 pnpm test

@@ -38,13 +38,13 @@
     "ai-agents",
     "spec"
   ],
-  "homepage": "https://github.com/merchant-agent/spec",
+  "homepage": "https://github.com/VedSoni-dev/merchant-agent",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/merchant-agent/spec.git",
+    "url": "git+https://github.com/VedSoni-dev/merchant-agent.git",
     "directory": "packages/core"
   },
-  "bugs": "https://github.com/merchant-agent/spec/issues",
+  "bugs": "https://github.com/VedSoni-dev/merchant-agent/issues",
   "devDependencies": {
     "@types/node": "20.16.10",
     "typescript": "5.6.3",

@@ -24,7 +24,7 @@ export default function Home() {
           See the demo →
         </Link>
         <a
-          href="https://github.com/merchant-agent/spec"
+          href="https://github.com/VedSoni-dev/merchant-agent"
           className="cta cta-secondary"
           target="_blank"
           rel="noopener"
@@ -90,7 +90,7 @@ app.use('/.well-known/merchant-agent', agent.handler())`}</code>
 
       <p>
         That&apos;s the entire v0 spec.{' '}
-        <Link href="https://github.com/merchant-agent/spec/blob/main/SPEC.md" target="_blank" rel="noopener">
+        <Link href="https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md" target="_blank" rel="noopener">
           Full spec on GitHub
         </Link>
         .
@@ -143,8 +143,8 @@ POST /offer         → conditional offers based on buyer context`}</code>
 
       <p className="muted" style={{ fontSize: '14px' }}>
         v0.1 · MIT · feedback welcome ·{' '}
-        <a href="https://github.com/merchant-agent/spec" target="_blank" rel="noopener">
-          github.com/merchant-agent/spec
+        <a href="https://github.com/VedSoni-dev/merchant-agent" target="_blank" rel="noopener">
+          github.com/VedSoni-dev/merchant-agent
         </a>
       </p>
     </main>

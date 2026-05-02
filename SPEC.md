@@ -215,4 +215,4 @@ This specification is published under MIT. The reference implementation is MIT. 
 
 ---
 
-*Specification authored 2026-05. Feedback and PRs: [github.com/merchant-agent/spec/issues](https://github.com/merchant-agent/spec/issues).*
+*Specification authored 2026-05. Feedback and PRs: [github.com/VedSoni-dev/merchant-agent/issues](https://github.com/VedSoni-dev/merchant-agent/issues).*
