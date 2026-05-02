@@ -11,7 +11,7 @@ This is the missing layer. A one-page spec, an MIT-licensed TypeScript SDK, a li
 
 - **Spec:** [SPEC.md](./SPEC.md)
 - **SDK:** [`packages/core`](./packages/core) → [`merchant-agent` on npm](https://www.npmjs.com/package/merchant-agent)
-- **Demo:** [`apps/demo`](./apps/demo)
+- **Live demo:** [merchant-agent.vercel.app](https://merchant-agent.vercel.app) — and the demo site is itself a working merchant-agent. Try [`/.well-known/merchant-agent/info`](https://merchant-agent.vercel.app/.well-known/merchant-agent/info).
 - **License:** MIT
 
 ---
