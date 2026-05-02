@@ -1,21 +1,60 @@
 import Link from 'next/link'
+import { AgentChat } from './AgentChat'
 
 export default function Home() {
   return (
-    <main className="container">
-      <div className="eyebrow">merchant-agent · v0.1 · MIT</div>
+    <>
+      {/* Decorative: looping agent-to-agent conversations in the side margins.
+          Hidden on narrow screens via CSS. */}
+      <AgentChat
+        position="left"
+        label="agent ↔ agent · discovery"
+        messages={[
+          { agent: 'buyer', text: 'GET /info' },
+          { agent: 'merchant', text: 'GoldenHour · cross-sell, brand-story, offer' },
+          { agent: 'buyer', text: 'GET /cross-sell?for=pour-over' },
+          { agent: 'merchant', text: '→ grinder-pro · scale-mini · kettle' },
+        ]}
+      />
+      <AgentChat
+        position="right"
+        label="agent ↔ agent · negotiation"
+        messages={[
+          { agent: 'buyer', text: 'POST /offer { first_time: true }' },
+          { agent: 'merchant', text: 'FIRSTPOUR15 · 15% off first bag' },
+          { agent: 'buyer', text: 'GET /brand-story?for=pour-over' },
+          { agent: 'merchant', text: '"Sourced from Huehuetenango..."' },
+        ]}
+      />
 
-      <div className="acronym-stack">
-        <span className="ac-old">SEO</span>
-        <span className="ac-sep">·</span>
-        <span className="ac-old">GEO</span>
-        <span className="ac-sep">·</span>
-        <span className="ac-old">AEO</span>
-        <span className="ac-sep">·</span>
-        <span className="ac-new">AAO</span>
-      </div>
+      {/* Margin disclaimer — left side, small, italic. */}
+      <aside className="margin-disclaimer" aria-label="developer note">
+        <div className="margin-disclaimer-label">note from the author</div>
+        <p>
+          This landing page itself isn&apos;t running AAO — I&apos;m broke for tokens rn. The{' '}
+          <Link href="/demo">/demo</Link> page is a real working agent-to-agent interaction. Go see it.
+        </p>
+      </aside>
 
-      <h1>The protocol for agent-to-agent optimization.</h1>
+      <main className="container">
+        <div className="eyebrow">merchant-agent · v0.1 · MIT · open source</div>
+
+        <div className="acronym-stack">
+          <span className="ac-old">SEO</span>
+          <span className="ac-sep">·</span>
+          <span className="ac-old">GEO</span>
+          <span className="ac-sep">·</span>
+          <span className="ac-old">AEO</span>
+          <span className="ac-sep">·</span>
+          <span className="ac-new">AAO</span>
+        </div>
+
+        <div className="acronym-expand">
+          <span className="acronym-arrow">↑</span>
+          <span className="acronym-expand-text">Agent-to-Agent Optimization</span>
+        </div>
+
+        <h1>The protocol for agent-to-agent optimization.</h1>
 
       <p style={{ fontSize: '20px', color: 'var(--muted)', marginTop: '32px' }}>
         SEO optimized content for crawlers. GEO got AI to cite your brand. AEO structured your content for
@@ -45,9 +84,12 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          Read the spec →
+          GitHub (open source) →
         </a>
       </div>
+      <p className="oss-tag">
+        Free and open source under MIT. Fork it, extend it, ship a buyer-agent that respects it.
+      </p>
 
       <hr className="rule" />
 
@@ -163,6 +205,7 @@ POST /offer         → conditional offers based on buyer context`}</code>
           github.com/VedSoni-dev/merchant-agent
         </a>
       </p>
-    </main>
+      </main>
+    </>
   )
 }
