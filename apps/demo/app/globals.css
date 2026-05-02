@@ -1,0 +1,271 @@
+:root {
+  --bg: #fafaf7;
+  --text: #1a1a1a;
+  --muted: #6a6a66;
+  --rule: #d8d6cf;
+  --accent: #b5651d;
+  --accent-soft: #e9c89a;
+  --code-bg: #f1ede4;
+
+  --serif: 'Tiempos Headline', 'PP Editorial New', 'Iowan Old Style', 'Iowan', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 32px;
+  margin-top: 56px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 22px;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+p {
+  margin: 0 0 20px 0;
+}
+
+code,
+pre {
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 18px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 24px 0;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 28px 120px;
+}
+
+.wide-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 28px 120px;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 56px 0;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 14px;
+  border: 0;
+  margin: 8px 12px 8px 0;
+}
+
+.cta:hover {
+  border-bottom: 0;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.cta-secondary:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* Side-by-side demo */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.split-divider {
+  background: var(--rule);
+}
+
+.flow {
+  padding: 28px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flow-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.flow-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.flow-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.log {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background: var(--code-bg);
+  padding: 16px;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 380px;
+}
+
+.log-line {
+  margin-bottom: 4px;
+}
+
+.log-line.merchant {
+  color: var(--accent);
+}
+
+.log-line.agent {
+  color: var(--text);
+}
+
+.aov {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.aov-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aov-value {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.aov-value.win {
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-divider {
+    display: none;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}

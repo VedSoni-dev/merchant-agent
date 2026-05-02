@@ -1,0 +1,53 @@
+{
+  "name": "merchant-agent",
+  "version": "0.1.0",
+  "description": "The merchandising layer for the agentic web. A framework-agnostic TypeScript SDK for the merchant-agent v0.1 spec.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/server.js",
+  "types": "./dist/server.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "agentic-commerce",
+    "merchant-agent",
+    "agent-web",
+    "merchandising",
+    "ai-agents",
+    "spec"
+  ],
+  "homepage": "https://github.com/merchant-agent/spec",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merchant-agent/spec.git",
+    "directory": "packages/core"
+  },
+  "bugs": "https://github.com/merchant-agent/spec/issues",
+  "devDependencies": {
+    "@types/node": "20.16.10",
+    "typescript": "5.6.3",
+    "vitest": "2.1.2"
+  }
+}
