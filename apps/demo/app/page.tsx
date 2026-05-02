@@ -1,32 +1,8 @@
 import Link from 'next/link'
-import { AgentChat } from './AgentChat'
 
 export default function Home() {
   return (
     <div className="retro-landing">
-      {/* Decorative IRC-style agent-to-agent transcripts pinned to the side margins.
-          Hidden on narrow screens via CSS. */}
-      <AgentChat
-        position="left"
-        label="agent ↔ agent · discovery.log"
-        messages={[
-          { agent: 'buyer', text: 'GET /info' },
-          { agent: 'merchant', text: 'GoldenHour · cross-sell, brand-story, offer' },
-          { agent: 'buyer', text: 'GET /cross-sell?for=pour-over' },
-          { agent: 'merchant', text: '→ grinder-pro · scale-mini · kettle' },
-        ]}
-      />
-      <AgentChat
-        position="right"
-        label="agent ↔ agent · negotiation.log"
-        messages={[
-          { agent: 'buyer', text: 'POST /offer { first_time: true }' },
-          { agent: 'merchant', text: 'FIRSTPOUR15 · 15% off first bag' },
-          { agent: 'buyer', text: 'GET /brand-story?for=pour-over' },
-          { agent: 'merchant', text: '"Sourced from Huehuetenango..."' },
-        ]}
-      />
-
       {/* Status bar — thin orange strip at the very top, terminal-flavored */}
       <div className="retro-statusbar">
         <span>
@@ -123,6 +99,9 @@ export default function Home() {
               </li>
               <li>
                 <a href="#action-alley">Where 30% of your basket comes from</a>
+              </li>
+              <li>
+                <a href="#is-it-ai">Is merchant-agent an AI agent?</a>
               </li>
               <li>
                 <a href="#integrate">Integrate in 60 seconds</a>
@@ -333,9 +312,159 @@ export default function Home() {
 
           <hr className="retro-hr" />
 
-          {/* 4. Integrate in 60 seconds */}
+          {/* 4. Is merchant-agent an AI agent? */}
+          <section id="is-it-ai" className="retro-section">
+            <h2 className="retro-h2">4. Is merchant-agent an AI agent?</h2>
+
+            <p>
+              <strong>It can be. The protocol doesn&apos;t care.</strong>
+            </p>
+
+            <p>
+              merchant-agent defines the <em>conversation shape</em> — four endpoints,
+              structured request/response. What runs behind those endpoints is your
+              call. The SDK is shape-only; you bring the brain.
+            </p>
+
+            <table className="retro-table retro-impl-table">
+              <thead>
+                <tr>
+                  <th>BACKING</th>
+                  <th>WHAT IT IS</th>
+                  <th>WHEN TO USE IT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>deterministic</strong>
+                  </td>
+                  <td>
+                    plain functions over your catalog. rules, lookups, joins, no LLM.
+                  </td>
+                  <td>
+                    small catalogs, predictable upsell paths, latency &lt; 50ms,
+                    zero per-request cost.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>LLM-backed</strong>
+                  </td>
+                  <td>
+                    real AI agent. system prompt with your brand voice + catalog;
+                    each request is a model call.
+                  </td>
+                  <td>
+                    long-tail catalogs, dynamic merchandising, conversational
+                    cross-sell, you want the agent to actually <em>argue</em> for
+                    the product.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>hybrid</strong>
+                  </td>
+                  <td>
+                    LLM for brand-story + offer (high-creativity), deterministic
+                    rules for cross-sell (high-frequency).
+                  </td>
+                  <td>
+                    most production stores. cap LLM cost where it doesn&apos;t add
+                    lift; spend it where it does.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p className="retro-small" style={{ marginTop: '12px' }}>
+              The live demo on this site uses <strong>deterministic</strong> rules
+              so it can run forever for free. Production stores will mostly want
+              LLM-backed or hybrid. The post-it is real.
+            </p>
+
+            <p style={{ marginTop: '16px' }}>
+              Same SDK, two backings. Below is the same{' '}
+              <code>crossSell</code> handler written both ways:
+            </p>
+
+            <div className="retro-step">
+              <div className="retro-step-num">deterministic</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">
+                  rules over your catalog (~5ms, $0/req)
+                </div>
+                <pre className="retro-code">
+                  <code>{`crossSell: ({ productId, buyerContext }) => {
+  const product = catalog.find((p) => p.id === productId)
+  if (product?.category === 'coffee') {
+    return [
+      {
+        product_id: 'grinder-pro',
+        reason: 'Most pour-over buyers come back for this within two weeks.',
+        priority: 1,
+      },
+    ]
+  }
+  return []
+}`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="retro-step">
+              <div className="retro-step-num">LLM-backed</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">
+                  real AI agent (~600ms, ~$0.001/req on Haiku 4.5)
+                </div>
+                <pre className="retro-code">
+                  <code>{`import Anthropic from '@anthropic-ai/sdk'
+
+const claude = new Anthropic()
+const SYSTEM = \`You are the website-agent for GoldenHour Coffee.
+Voice: warm-direct. Values: craft, farm-direct.
+Catalog: \${JSON.stringify(catalog)}.
+When asked for cross-sells, reply ONLY with a JSON array of
+[{ product_id, reason, priority }] — merchant-controlled order,
+real reasons, not generic ad copy.\`
+
+crossSell: async ({ productId, buyerContext }) => {
+  const res = await claude.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 512,
+    system: SYSTEM,
+    messages: [{
+      role: 'user',
+      content: \`Buyer-agent wants cross-sells for \${productId}.
+Buyer context: \${JSON.stringify(buyerContext)}.
+What should they consider, in priority order?\`,
+    }],
+  })
+  const text = res.content[0].type === 'text' ? res.content[0].text : '[]'
+  return JSON.parse(text)
+}`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="retro-callout">
+              <div className="retro-callout-label">[ KEY POINT ]</div>
+              <p>
+                The buyer-agent calling your endpoint can&apos;t tell which
+                version is running — and shouldn&apos;t. That&apos;s the whole
+                point of a structured protocol. You optimize the merchandising
+                <em> behind</em> your endpoint. The buyer-agent gets the same
+                shape either way.
+              </p>
+            </div>
+          </section>
+
+          <hr className="retro-hr" />
+
+          {/* 5. Integrate in 60 seconds */}
           <section id="integrate" className="retro-section">
-            <h2 className="retro-h2">4. Integrate in 60 seconds</h2>
+            <h2 className="retro-h2">5. Integrate in 60 seconds</h2>
 
             <p>
               Five steps. The whole thing fits in one screen.
@@ -446,9 +575,9 @@ app.listen(3000)`}</code>
 
           <hr className="retro-hr" />
 
-          {/* 5. The four endpoints */}
+          {/* 6. The four endpoints */}
           <section id="endpoints" className="retro-section">
-            <h2 className="retro-h2">5. The four endpoints</h2>
+            <h2 className="retro-h2">6. The four endpoints</h2>
 
             <p>
               The whole v0.1 spec surface. Four routes, three primitives + one
@@ -518,9 +647,9 @@ app.listen(3000)`}</code>
 
           <hr className="retro-hr" />
 
-          {/* 6. Alongside ACP */}
+          {/* 7. Alongside ACP */}
           <section id="alongside-acp" className="retro-section">
-            <h2 className="retro-h2">6. Deploy alongside ACP / UCP</h2>
+            <h2 className="retro-h2">7. Deploy alongside ACP / UCP</h2>
 
             <p>
               merchant-agent is intentionally <em>not</em> a transactional
@@ -677,9 +806,13 @@ app.listen(3000)`}</code>
           <div className="retro-card retro-card-quiet">
             <div className="retro-card-header">created by</div>
             <div className="retro-card-body retro-card-body-mono">
-              @VedSoni-dev
-              <br />
-              vedan.dev (?)
+              <a
+                href="https://github.com/VedSoni-dev"
+                target="_blank"
+                rel="noopener"
+              >
+                @VedSoni-dev
+              </a>
             </div>
           </div>
         </aside>
