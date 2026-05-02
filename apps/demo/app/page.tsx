@@ -3,12 +3,12 @@ import { AgentChat } from './AgentChat'
 
 export default function Home() {
   return (
-    <>
-      {/* Decorative: looping agent-to-agent conversations in the side margins.
+    <div className="retro-landing">
+      {/* Decorative IRC-style agent-to-agent transcripts pinned to the side margins.
           Hidden on narrow screens via CSS. */}
       <AgentChat
         position="left"
-        label="agent ↔ agent · discovery"
+        label="agent ↔ agent · discovery.log"
         messages={[
           { agent: 'buyer', text: 'GET /info' },
           { agent: 'merchant', text: 'GoldenHour · cross-sell, brand-story, offer' },
@@ -18,7 +18,7 @@ export default function Home() {
       />
       <AgentChat
         position="right"
-        label="agent ↔ agent · negotiation"
+        label="agent ↔ agent · negotiation.log"
         messages={[
           { agent: 'buyer', text: 'POST /offer { first_time: true }' },
           { agent: 'merchant', text: 'FIRSTPOUR15 · 15% off first bag' },
@@ -27,83 +27,338 @@ export default function Home() {
         ]}
       />
 
-      {/* Margin disclaimer — left side, small, italic. */}
-      <aside className="margin-disclaimer" aria-label="developer note">
-        <div className="margin-disclaimer-label">note from the author</div>
-        <p>
-          This landing page itself isn&apos;t running AAO — I&apos;m broke for tokens rn. The{' '}
-          <Link href="/demo">/demo</Link> page is a real working agent-to-agent interaction. Go see it.
-        </p>
-      </aside>
-
-      <main className="container">
-        <div className="eyebrow">merchant-agent · v0.1 · MIT · open source</div>
-
-        <div className="acronym-stack">
-          <span className="ac-old">SEO</span>
-          <span className="ac-sep">·</span>
-          <span className="ac-old">GEO</span>
-          <span className="ac-sep">·</span>
-          <span className="ac-old">AEO</span>
-          <span className="ac-sep">·</span>
-          <span className="ac-new">AAO</span>
-        </div>
-
-        <div className="acronym-expand">
-          <span className="acronym-arrow">↑</span>
-          <span className="acronym-expand-text">Agent-to-Agent Optimization</span>
-        </div>
-
-        <h1>The protocol for agent-to-agent optimization.</h1>
-
-      <p style={{ fontSize: '20px', color: 'var(--muted)', marginTop: '32px' }}>
-        SEO optimized content for crawlers. GEO got AI to cite your brand. AEO structured your content for
-        answer engines. All three optimize for an <em>intermediary</em> that delivers something to a human.
-      </p>
-
-      <p style={{ fontSize: '20px', color: 'var(--muted)' }}>
-        <strong>AAO is different.</strong> When a personal agent shops on behalf of a human, the agent <em>is</em>{' '}
-        the customer. You're not trying to get cited or ranked. You're trying to win a conversation with another
-        agent that controls the purchase decision. That requires optimizing your <em>own agent endpoint</em>, not
-        your content.
-      </p>
-
-      <p style={{ fontSize: '20px', color: 'var(--muted)' }}>
-        OpenAI and Google built the agent cash register (ACP, UCP, ChatGPT Instant Checkout). They forgot the
-        rest of the store. merchant-agent is the protocol that brings the merchant&apos;s voice back. One-page
-        spec. MIT-licensed SDK. Live demo. Deploy it next to your ACP endpoint in 60 seconds.
-      </p>
-
-      <div style={{ marginTop: '40px' }}>
-        <Link href="/demo" className="cta">
-          See the demo →
-        </Link>
-        <a
-          href="https://github.com/VedSoni-dev/merchant-agent"
-          className="cta cta-secondary"
-          target="_blank"
-          rel="noopener"
-        >
-          GitHub (open source) →
-        </a>
+      {/* Status bar — thin orange strip at the very top, terminal-flavored */}
+      <div className="retro-statusbar">
+        <span>
+          [ <strong>merchant-agent</strong> ] v0.1 · MIT · open source · 4 endpoints · spec stable
+        </span>
+        <span className="retro-statusbar-right">last updated 2026-05-02</span>
       </div>
-      <p className="oss-tag">
-        Free and open source under MIT. Fork it, extend it, ship a buyer-agent that respects it.
-      </p>
 
-      <hr className="rule" />
+      {/* Subreddit-style header card */}
+      <header className="retro-header">
+        <div className="retro-header-inner">
+          <div className="retro-header-left">
+            <div className="retro-mascot" aria-hidden="true">
+              <pre>{`  ___    ___
+ [ o ]<-[ o ]
+  ---    ---`}</pre>
+            </div>
+          </div>
+          <div className="retro-header-main">
+            <h1 className="retro-title">merchant-agent</h1>
+            <p className="retro-tagline">
+              Hire a salesperson for the agents shopping at your store.
+            </p>
+            <p className="retro-subtagline">
+              The open protocol for <strong>AAO</strong> (Agent-to-Agent Optimization).
+              SEO/GEO/AEO optimize content for an intermediary. AAO optimizes your
+              endpoint for the buyer-agent itself.
+            </p>
+            <div className="retro-cta-row">
+              <a
+                className="retro-btn retro-btn-primary"
+                href="https://github.com/VedSoni-dev/merchant-agent"
+                target="_blank"
+                rel="noopener"
+              >
+                [ GitHub (open source) ]
+              </a>
+              <Link className="retro-btn" href="/demo">
+                [ ▶ live demo ]
+              </Link>
+              <a
+                className="retro-btn"
+                href="https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md"
+                target="_blank"
+                rel="noopener"
+              >
+                [ read the spec ]
+              </a>
+            </div>
+          </div>
+          <div className="retro-header-right">
+            <table className="retro-meta">
+              <tbody>
+                <tr>
+                  <td>version</td>
+                  <td>0.1</td>
+                </tr>
+                <tr>
+                  <td>license</td>
+                  <td>MIT</td>
+                </tr>
+                <tr>
+                  <td>endpoints</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>primitives</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>spec pages</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </header>
 
-      <h2>The 60-second install</h2>
+      {/* Two-column body */}
+      <div className="retro-grid">
+        <main className="retro-main">
+          {/* TOC */}
+          <nav className="retro-toc" aria-label="Table of contents">
+            <div className="retro-toc-label">
+              ── table of contents ─────────────────────────
+            </div>
+            <ol className="retro-toc-list">
+              <li>
+                <a href="#what-is-aao">What is AAO?</a>
+              </li>
+              <li>
+                <a href="#salespeople">Salespeople, but for agents</a>
+              </li>
+              <li>
+                <a href="#action-alley">Where 30% of your basket comes from</a>
+              </li>
+              <li>
+                <a href="#integrate">Integrate in 60 seconds</a>
+              </li>
+              <li>
+                <a href="#endpoints">The four endpoints</a>
+              </li>
+              <li>
+                <a href="#alongside-acp">Deploy alongside ACP / UCP</a>
+              </li>
+            </ol>
+          </nav>
 
-      <pre>
-        <code>{`npm install merchant-agent`}</code>
-      </pre>
+          {/* 1. What is AAO */}
+          <section id="what-is-aao" className="retro-section">
+            <h2 className="retro-h2">1. What is AAO?</h2>
 
-      <pre>
-        <code>{`import { defineMerchantAgent } from 'merchant-agent'
-import express from 'express'
+            <table className="retro-table retro-acronym-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ACRONYM</th>
+                  <th>ERA</th>
+                  <th>OPTIMIZE FOR</th>
+                  <th>WHO READS IT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td className="retro-acro">SEO</td>
+                  <td>1995–</td>
+                  <td>crawlers</td>
+                  <td>a human (after a search)</td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td className="retro-acro">GEO</td>
+                  <td>2024–</td>
+                  <td>generative AI</td>
+                  <td>a human (in an AI summary)</td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td className="retro-acro">AEO</td>
+                  <td>2024–</td>
+                  <td>answer engines</td>
+                  <td>a human (in a featured snippet)</td>
+                </tr>
+                <tr className="retro-acronym-table-new">
+                  <td>4.</td>
+                  <td className="retro-acro retro-acro-new">AAO</td>
+                  <td>2026–</td>
+                  <td>buyer-agents</td>
+                  <td>
+                    <strong>nobody. the agent IS the customer.</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-const agent = defineMerchantAgent({
+            <p>
+              SEO, GEO, and AEO are passive content tweaks aimed at an intermediary
+              that delivers something to a human reader. <strong>AAO is different.</strong>{' '}
+              When a personal agent shops on behalf of a human, it doesn&apos;t read
+              your &quot;About&quot; page. It hits an endpoint, asks structured
+              questions, and decides. The optimization target is the buyer.
+            </p>
+
+            <p>
+              <strong>AAO = Agent-to-Agent Optimization.</strong> The discipline of
+              tuning the agent your store publishes so it converts visiting
+              buyer-agents at a higher rate. merchant-agent is the open protocol
+              that defines the conversation those two agents have.
+            </p>
+          </section>
+
+          <hr className="retro-hr" />
+
+          {/* 2. Salespeople, but for agents */}
+          <section id="salespeople" className="retro-section">
+            <h2 className="retro-h2">2. Salespeople, but for agents</h2>
+
+            <p>
+              Walk into a real store. A salesperson greets you. Tells you about
+              the brand. Suggests something that pairs well with the thing
+              you&apos;re holding. Closes the deal with a perk. That conversation
+              is worth real money — it&apos;s why retail still hires humans.
+            </p>
+
+            <p>
+              Now picture a personal agent &quot;walking in&quot; to your website.
+              There&apos;s nobody there. It scrapes your HTML. Reads the lowest
+              price. Picks. Done.
+            </p>
+
+            <p>
+              merchant-agent is the salesperson your website hires for that
+              moment. Four things a salesperson does — four endpoints:
+            </p>
+
+            <table className="retro-table retro-mapping-table">
+              <thead>
+                <tr>
+                  <th>WHAT A SALESPERSON DOES</th>
+                  <th>merchant-agent ENDPOINT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&quot;Hi, welcome in. We&apos;re GoldenHour Coffee.&quot;</td>
+                  <td>
+                    <code>GET /info</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Tell the brand story. The farm. The 11-year relationship. The
+                    why.
+                  </td>
+                  <td>
+                    <code>GET /brand-story</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Suggest what pairs with this. &quot;Pour-over folks come back for
+                    a grinder.&quot;
+                  </td>
+                  <td>
+                    <code>GET /cross-sell</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Close the deal with a perk. &quot;Tell you what — 15% off your
+                    first bag.&quot;
+                  </td>
+                  <td>
+                    <code>POST /offer</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <hr className="retro-hr" />
+
+          {/* 3. Action Alley */}
+          <section id="action-alley" className="retro-section">
+            <h2 className="retro-h2">3. Where 30% of your basket comes from</h2>
+
+            <div className="retro-callout">
+              <div className="retro-callout-label">[ FIELD NOTE ]</div>
+              <p>
+                HEB&apos;s &quot;Action Alley&quot; — the wide aisle right after
+                the entrance — is estimated to drive ~30% of basket lift through
+                merchandising alone. End caps. Seasonal displays. The impulse
+                rack at the register. Brand storytelling on shelf talkers. <em>You
+                came in for toothpaste. You walked out with a $15 pumpkin.</em>
+              </p>
+            </div>
+
+            <p>
+              The agent web has zero version of any of this. When agents start
+              doing the shopping, that 30% disappears — unless the merchant
+              publishes a way for the agent to hear them.
+            </p>
+
+            <p>
+              That&apos;s what merchant-agent is for. The live A/B in the demo
+              shows the gap directly:
+            </p>
+
+            <table className="retro-table retro-aov-table">
+              <thead>
+                <tr>
+                  <th>FLOW</th>
+                  <th>WHAT THE BUYER-AGENT DOES</th>
+                  <th>AOV</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>scrape</td>
+                  <td>parses HTML, picks cheapest visible product</td>
+                  <td>$24</td>
+                </tr>
+                <tr className="retro-aov-win">
+                  <td>AAO</td>
+                  <td>
+                    finds <code>&lt;link rel=&quot;merchant-agent&quot;&gt;</code>,
+                    talks to the merchant&apos;s agent, takes the cross-sell, takes
+                    the offer
+                  </td>
+                  <td>
+                    <strong>$71</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p className="retro-small">
+              Same buyer. Same product page. The merchant&apos;s voice did the
+              work. <Link href="/demo">→ Watch it run live</Link>.
+            </p>
+          </section>
+
+          <hr className="retro-hr" />
+
+          {/* 4. Integrate in 60 seconds */}
+          <section id="integrate" className="retro-section">
+            <h2 className="retro-h2">4. Integrate in 60 seconds</h2>
+
+            <p>
+              Five steps. The whole thing fits in one screen.
+            </p>
+
+            <div className="retro-step">
+              <div className="retro-step-num">step 1.</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">Install the SDK</div>
+                <pre className="retro-code">
+                  <code>{`$ npm install merchant-agent`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="retro-step">
+              <div className="retro-step-num">step 2.</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">Define your agent</div>
+                <pre className="retro-code">
+                  <code>{`import { defineMerchantAgent } from 'merchant-agent'
+
+export const agent = defineMerchantAgent({
   name: 'GoldenHour Coffee',
   brandVoice: 'warm-direct',
   values: ['craft', 'farm-direct'],
@@ -117,95 +372,335 @@ const agent = defineMerchantAgent({
   ],
 
   brandStory: ({ productId }) => ({
-    story: "Sourced direct from the Lopez family's 4-generation farm in Huehuetenango.",
+    story: "Sourced from the Lopez family's 4-generation farm in Huehuetenango.",
     values: ['craft', 'farm-direct'],
     voice: 'warm-direct',
   }),
 
   offer: ({ buyerContext, productId }) => {
     if (buyerContext.first_time_buyer) {
-      return { description: '15% off your first bag', terms: 'one-time', expires_at: '2026-12-31', code: 'FIRSTPOUR15' }
+      return {
+        description: '15% off your first bag',
+        terms: 'First-time buyers only.',
+        expires_at: '2026-12-31T23:59:59Z',
+        code: 'FIRSTPOUR15',
+      }
     }
     return null
   },
-})
+})`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="retro-step">
+              <div className="retro-step-num">step 3.</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">Mount the endpoint (Express)</div>
+                <pre className="retro-code">
+                  <code>{`import express from 'express'
+import { agent } from './agent.js'
 
 const app = express()
-app.use('/.well-known/merchant-agent', agent.handler())`}</code>
-      </pre>
+app.use('/.well-known/merchant-agent', agent.handler())
+app.listen(3000)`}</code>
+                </pre>
+                <p className="retro-step-note">
+                  Next.js, Hono, Bun, native fetch all work too. Use{' '}
+                  <code>agent.fetch(request)</code> with any standard{' '}
+                  <code>Request</code>.
+                </p>
+              </div>
+            </div>
 
-      <p>
-        Then in your HTML <code>&lt;head&gt;</code>:
-      </p>
+            <div className="retro-step">
+              <div className="retro-step-num">step 4.</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">
+                  Advertise it from your HTML &lt;head&gt;
+                </div>
+                <pre className="retro-code">
+                  <code>{`<link rel="merchant-agent" href="/.well-known/merchant-agent">`}</code>
+                </pre>
+              </div>
+            </div>
 
-      <pre>
-        <code>{`<link rel="merchant-agent" href="/.well-known/merchant-agent">`}</code>
-      </pre>
+            <div className="retro-step">
+              <div className="retro-step-num">step 5.</div>
+              <div className="retro-step-body">
+                <div className="retro-step-title">Verify</div>
+                <pre className="retro-code">
+                  <code>{`$ curl https://yoursite.com/.well-known/merchant-agent/info \\
+       -H "Accept: application/merchant-agent;v=0.1"
 
-      <hr className="rule" />
+{ "name": "...", "primitives": ["cross-sell","brand-story","offer"], ... }`}</code>
+                </pre>
+              </div>
+            </div>
 
-      <h2>The four endpoints</h2>
+            <p className="retro-callout retro-callout-success">
+              <strong>Done.</strong> Buyer-agents that respect the spec will now
+              find your endpoint and call it. Total deployed code: ~50 lines.
+            </p>
+          </section>
 
-      <p>
-        That&apos;s the entire v0 spec.{' '}
-        <Link href="https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md" target="_blank" rel="noopener">
-          Full spec on GitHub
-        </Link>
-        .
-      </p>
+          <hr className="retro-hr" />
 
-      <pre>
-        <code>{`GET  /info          → capability discovery
-GET  /cross-sell    → ordered, merchant-controlled recommendations
-GET  /brand-story   → the merchant's voice, values, narrative
-POST /offer         → conditional offers based on buyer context`}</code>
-      </pre>
+          {/* 5. The four endpoints */}
+          <section id="endpoints" className="retro-section">
+            <h2 className="retro-h2">5. The four endpoints</h2>
 
-      <hr className="rule" />
+            <p>
+              The whole v0.1 spec surface. Four routes, three primitives + one
+              capability handshake. Anything beyond these four is bikeshed bait
+              and gets punted to v0.2.
+            </p>
 
-      <h2>Deploy alongside ACP, not against it</h2>
+            <table className="retro-table retro-endpoints-table">
+              <thead>
+                <tr>
+                  <th>METHOD</th>
+                  <th>PATH</th>
+                  <th>TO A HUMAN, IT&apos;S...</th>
+                  <th>TO A BUYER-AGENT, IT&apos;S...</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code>GET</code>
+                  </td>
+                  <td>
+                    <code>/info</code>
+                  </td>
+                  <td>&quot;Hi, I&apos;m GoldenHour Coffee.&quot;</td>
+                  <td>capability handshake — what primitives are supported</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>GET</code>
+                  </td>
+                  <td>
+                    <code>/cross-sell</code>
+                  </td>
+                  <td>&quot;Folks who buy this also love...&quot;</td>
+                  <td>merchant-ranked recommendation list with reasons</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>GET</code>
+                  </td>
+                  <td>
+                    <code>/brand-story</code>
+                  </td>
+                  <td>&quot;Let me tell you about the farm...&quot;</td>
+                  <td>structured brand voice + values + narrative</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>POST</code>
+                  </td>
+                  <td>
+                    <code>/offer</code>
+                  </td>
+                  <td>&quot;Tell you what — 15% off today.&quot;</td>
+                  <td>conditional offer based on buyer context</td>
+                </tr>
+              </tbody>
+            </table>
 
-      <p>
-        merchant-agent is intentionally not a transactional protocol. ACP and UCP already won that lane. Publish
-        both link tags side-by-side in your HTML head:
-      </p>
+            <p className="retro-small">
+              v0.2 will add: bearer-token auth, an extensions registry
+              (<code>x-loyalty</code>, <code>x-reviews</code>, etc.), and a
+              JSON-RPC mirror for MCP-compatible transports.
+            </p>
+          </section>
 
-      <pre>
-        <code>{`<link rel="agentic-commerce" href="/.well-known/agentic-commerce">
-<link rel="merchant-agent" href="/.well-known/merchant-agent">`}</code>
-      </pre>
+          <hr className="retro-hr" />
 
-      <p>
-        Buyer-agents read both: ACP for the cash register, merchant-agent for the rest of the store.
-      </p>
+          {/* 6. Alongside ACP */}
+          <section id="alongside-acp" className="retro-section">
+            <h2 className="retro-h2">6. Deploy alongside ACP / UCP</h2>
 
-      <hr className="rule" />
+            <p>
+              merchant-agent is intentionally <em>not</em> a transactional
+              protocol. ACP (OpenAI + Stripe) and UCP (Google + Shopify + Etsy +
+              Walmart + Target + Wayfair + 20 others) already won that lane.
+              Publish both link tags side-by-side:
+            </p>
 
-      <h2>Why this matters</h2>
+            <pre className="retro-code">
+              <code>{`<link rel="agentic-commerce" href="/.well-known/agentic-commerce">
+<link rel="merchant-agent"   href="/.well-known/merchant-agent">`}</code>
+            </pre>
 
-      <p>
-        HEB&apos;s Action Alley generates an estimated 30% of basket lift through merchandising alone — the
-        end-cap, the seasonal display, the impulse rack at the register. The agent web has zero version of any of
-        this. When agents start doing the shopping, that 30% disappears. Merchants who deployed merchant-agent
-        keep it. Merchants who didn&apos;t, watched their AOV flatten to whatever the agent picked first on
-        price.
-      </p>
+            <p>
+              Buyer-agents read both. ACP for the cash register. merchant-agent
+              for the rest of the store.
+            </p>
+          </section>
 
-      <p>
-        This is the wedge. The spec is intentionally tiny — three primitives, four endpoints, one weekend to
-        deploy — so the long tail of merchants on WooCommerce, BigCommerce, Substack-shaped commerce, and custom
-        stacks can ship it as fast as the Shopify+Etsy-Walmart consortium can.
-      </p>
+          <hr className="retro-hr" />
 
-      <hr className="rule" />
+          {/* CTA bottom */}
+          <section className="retro-section retro-cta-end">
+            <h2 className="retro-h2">Ready?</h2>
+            <div className="retro-cta-row">
+              <a
+                className="retro-btn retro-btn-primary"
+                href="https://github.com/VedSoni-dev/merchant-agent"
+                target="_blank"
+                rel="noopener"
+              >
+                [ GitHub (open source) ]
+              </a>
+              <Link className="retro-btn" href="/demo">
+                [ ▶ live demo ]
+              </Link>
+              <a
+                className="retro-btn"
+                href="https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md"
+                target="_blank"
+                rel="noopener"
+              >
+                [ read the spec ]
+              </a>
+              <a
+                className="retro-btn"
+                href="https://www.npmjs.com/package/merchant-agent"
+                target="_blank"
+                rel="noopener"
+              >
+                [ npm ]
+              </a>
+            </div>
+            <p className="retro-small" style={{ marginTop: '12px' }}>
+              Free and open source under MIT. Fork it, extend it, ship a
+              buyer-agent that respects it.
+            </p>
+          </section>
+        </main>
 
-      <p className="muted" style={{ fontSize: '14px' }}>
-        v0.1 · MIT · feedback welcome ·{' '}
-        <a href="https://github.com/VedSoni-dev/merchant-agent" target="_blank" rel="noopener">
-          github.com/VedSoni-dev/merchant-agent
-        </a>
-      </p>
-      </main>
-    </>
+        {/* Right rail */}
+        <aside className="retro-rail">
+          <div className="retro-card">
+            <div className="retro-card-header">about merchant-agent</div>
+            <div className="retro-card-body">
+              <p>
+                The protocol for AAO. Open source. MIT-licensed. v0.1 spec
+                stable. Created May 2026.
+              </p>
+            </div>
+          </div>
+
+          <div className="retro-card">
+            <div className="retro-card-header">links</div>
+            <ul className="retro-linklist">
+              <li>
+                →{' '}
+                <a
+                  href="https://github.com/VedSoni-dev/merchant-agent"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  github / source
+                </a>
+              </li>
+              <li>
+                →{' '}
+                <a
+                  href="https://github.com/VedSoni-dev/merchant-agent/blob/main/SPEC.md"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  spec.md (v0.1)
+                </a>
+              </li>
+              <li>
+                →{' '}
+                <a
+                  href="https://www.npmjs.com/package/merchant-agent"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  npm package
+                </a>
+              </li>
+              <li>
+                → <Link href="/demo">live A/B demo</Link>
+              </li>
+              <li>
+                →{' '}
+                <a
+                  href="https://merchant-agent.vercel.app/.well-known/merchant-agent/info"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  this site&apos;s /info
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="retro-card">
+            <div className="retro-card-header">primitives (v0.1)</div>
+            <ul className="retro-linklist retro-linklist-plain">
+              <li>cross-sell</li>
+              <li>brand-story</li>
+              <li>offer</li>
+            </ul>
+          </div>
+
+          <div className="retro-card">
+            <div className="retro-card-header">house rules</div>
+            <ol className="retro-linklist retro-linklist-numbered">
+              <li>v0.1 surface is locked at four endpoints.</li>
+              <li>Spec changes → open an issue tagged v0.2 first.</li>
+              <li>Bug fixes / docs → straight to PR.</li>
+              <li>No vibes. Show evidence.</li>
+            </ol>
+          </div>
+
+          <div className="retro-postit">
+            <div className="retro-postit-tape" aria-hidden="true" />
+            <div className="retro-postit-label">→ note from the author</div>
+            <p>
+              this landing page itself isn&apos;t running AAO — i&apos;m broke
+              for tokens rn.
+            </p>
+            <p>
+              the <Link href="/demo">/demo</Link> page is a real working
+              agent-to-agent interaction. go see it.
+            </p>
+          </div>
+
+          <div className="retro-card retro-card-quiet">
+            <div className="retro-card-header">created by</div>
+            <div className="retro-card-body retro-card-body-mono">
+              @VedSoni-dev
+              <br />
+              vedan.dev (?)
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      {/* Footer */}
+      <footer className="retro-footer">
+        <div>
+          merchant-agent v0.1 · MIT · open source · 2026-05 ·{' '}
+          <a
+            href="https://github.com/VedSoni-dev/merchant-agent"
+            target="_blank"
+            rel="noopener"
+          >
+            github.com/VedSoni-dev/merchant-agent
+          </a>
+        </div>
+        <div className="retro-footer-mono">
+          spec → SDK → demo. forks encouraged.
+        </div>
+      </footer>
+    </div>
   )
 }

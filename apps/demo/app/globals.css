@@ -1,3 +1,12 @@
+/* ============================================================================
+   merchant-agent — globals
+   Two visual systems live here:
+   1. Default (used by /demo) — editorial, serif headlines, cream + amber
+   2. .retro-landing scope (used by /) — old-web spec-doc, Verdana + Courier,
+      cream + Reddit-orange-red. All rules are scoped under .retro-landing so
+      they don't leak to /demo.
+   ============================================================================ */
+
 :root {
   --bg: #fafaf7;
   --text: #1a1a1a;
@@ -173,6 +182,46 @@ pre code {
   font-weight: 500;
 }
 
+.muted {
+  color: var(--muted);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 56px 0;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 14px;
+  border: 0;
+  margin: 8px 12px 8px 0;
+}
+
+.cta:hover {
+  border-bottom: 0;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.cta-secondary:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
 .oss-tag {
   font-family: var(--mono);
   font-size: 12px;
@@ -181,7 +230,121 @@ pre code {
   margin-bottom: 0;
 }
 
-/* Margin chat animations + author note (decorative side-rail) */
+/* Side-by-side demo (used on /demo) */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.split-divider {
+  background: var(--rule);
+}
+
+.flow {
+  padding: 28px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flow-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.flow-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.flow-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.log {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background: var(--code-bg);
+  padding: 16px;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 380px;
+}
+
+.log-line {
+  margin-bottom: 4px;
+}
+
+.log-line.merchant {
+  color: var(--accent);
+}
+
+.log-line.agent {
+  color: var(--text);
+}
+
+.aov {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.aov-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aov-value {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.aov-value.win {
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-divider {
+    display: none;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}
+
+/* Margin chat animations + author note (decorative side-rail).
+   Old-bubble look kept here as a fallback; .retro-landing overrides below. */
 
 .agent-chat,
 .margin-disclaimer {
@@ -318,155 +481,887 @@ pre code {
   }
 }
 
-.muted {
-  color: var(--muted);
-}
+/* ============================================================================
+   .retro-landing — old-web spec-doc system
+   Old Reddit (pre-2015) for chrome and color, HN for density, BBS/IRC for
+   the chat animations and code blocks. Verdana body, Courier code.
+   Cream bg, true-black text, classic-blue links, Reddit-orange-red accent.
+   ============================================================================ */
 
-.rule {
-  border: 0;
-  border-top: 1px solid var(--rule);
-  margin: 56px 0;
-}
+.retro-landing {
+  /* Local token overrides — do not leak outside .retro-landing */
+  --r-bg: #f6f5ee;
+  --r-bg-alt: #fffaf0;
+  --r-panel: #fffdf6;
+  --r-panel-alt: #ecead8;
+  --r-text: #000000;
+  --r-text-muted: #555555;
+  --r-text-faint: #888888;
+  --r-rule: #b8b6a8;
+  --r-rule-soft: #d6d3c2;
+  --r-link: #0000ee;
+  --r-link-visited: #551a8b;
+  --r-accent: #ff4500;
+  --r-accent-deep: #cc3700;
+  --r-accent-soft: #ffe1b3;
+  --r-postit: #fff8b3;
+  --r-postit-shadow: rgba(0, 0, 0, 0.18);
 
-.cta {
-  display: inline-block;
-  background: var(--text);
-  color: var(--bg);
-  padding: 14px 22px;
-  border-radius: 4px;
-  font-family: var(--mono);
-  font-size: 14px;
-  border: 0;
-  margin: 8px 12px 8px 0;
-}
+  --r-sans: Verdana, Geneva, Tahoma, sans-serif;
+  --r-mono: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
 
-.cta:hover {
-  border-bottom: 0;
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.cta-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--text);
-}
-
-.cta-secondary:hover {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
-
-/* Side-by-side demo */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  gap: 0;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.split-divider {
-  background: var(--rule);
-}
-
-.flow {
-  padding: 28px;
-  min-height: 520px;
-  display: flex;
-  flex-direction: column;
-}
-
-.flow-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-.flow-title {
-  font-family: var(--serif);
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-
-.flow-subtitle {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-
-.log {
-  flex: 1;
-  font-family: var(--mono);
+  background: var(--r-bg);
+  color: var(--r-text);
+  font-family: var(--r-sans);
   font-size: 13px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  background: var(--code-bg);
-  padding: 16px;
-  border-radius: 4px;
-  overflow-y: auto;
-  max-height: 380px;
+  line-height: 1.55;
+  min-height: 100vh;
+  padding-bottom: 40px;
 }
 
-.log-line {
-  margin-bottom: 4px;
+.retro-landing,
+.retro-landing * {
+  box-sizing: border-box;
 }
 
-.log-line.merchant {
-  color: var(--accent);
+.retro-landing a {
+  color: var(--r-link);
+  text-decoration: underline;
+  border-bottom: 0;
 }
 
-.log-line.agent {
-  color: var(--text);
+.retro-landing a:visited {
+  color: var(--r-link-visited);
 }
 
-.aov {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
+.retro-landing a:hover {
+  color: var(--r-accent);
+}
+
+/* --- Status bar (terminal strip at the very top) --- */
+
+.retro-statusbar {
+  background: var(--r-accent);
+  color: var(--r-bg);
+  font-family: var(--r-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 5px 14px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  border-bottom: 2px solid var(--r-accent-deep);
 }
 
-.aov-label {
-  font-family: var(--mono);
+.retro-statusbar strong {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.retro-statusbar-right {
+  opacity: 0.85;
+}
+
+/* --- Subreddit-style header card --- */
+
+.retro-header {
+  background: var(--r-panel);
+  border-bottom: 1px solid var(--r-rule);
+  padding: 22px 0 24px;
+}
+
+.retro-header-inner {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.retro-mascot {
+  font-family: var(--r-mono);
   font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
+  line-height: 1.05;
+  color: var(--r-accent);
+  background: var(--r-bg);
+  border: 1px solid var(--r-rule);
+  padding: 8px 10px;
+  white-space: pre;
 }
 
-.aov-value {
-  font-family: var(--serif);
-  font-size: 36px;
+.retro-mascot pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.retro-header-main {
+  min-width: 0;
+}
+
+.retro-title {
+  font-family: var(--r-sans);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+  margin: 0 0 4px 0;
+  color: var(--r-text);
+}
+
+.retro-tagline {
+  font-family: var(--r-sans);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--r-text);
+}
+
+.retro-subtagline {
+  font-size: 12.5px;
+  margin: 0 0 14px 0;
+  color: var(--r-text);
+  max-width: 540px;
+}
+
+.retro-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.retro-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  font-family: var(--r-mono);
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--r-bg);
+  color: var(--r-text);
+  border: 1px solid var(--r-rule);
+  border-bottom-color: var(--r-text-faint);
+  border-right-color: var(--r-text-faint);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: none;
+  cursor: pointer;
+}
+
+.retro-landing a.retro-btn {
+  color: var(--r-text);
+  text-decoration: none;
+}
+
+.retro-btn:hover {
+  background: var(--r-panel-alt);
+  color: var(--r-accent-deep);
+  border-color: var(--r-accent);
+}
+
+.retro-btn:active {
+  border-top-color: var(--r-text-faint);
+  border-left-color: var(--r-text-faint);
+  border-bottom-color: var(--r-rule);
+  border-right-color: var(--r-rule);
+}
+
+.retro-btn-primary {
+  background: var(--r-accent);
+  color: var(--r-bg) !important;
+  border-color: var(--r-accent-deep);
+}
+
+.retro-btn-primary:hover {
+  background: var(--r-accent-deep);
+  color: var(--r-bg) !important;
+  border-color: var(--r-accent-deep);
+}
+
+/* --- Header right-side metadata table --- */
+
+.retro-header-right {
+  min-width: 168px;
+}
+
+.retro-meta {
+  font-family: var(--r-mono);
+  font-size: 11px;
+  border-collapse: collapse;
+  border: 1px solid var(--r-rule);
+  background: var(--r-bg);
+  width: 168px;
+}
+
+.retro-meta td {
+  padding: 3px 8px;
+  border-bottom: 1px dotted var(--r-rule-soft);
+  vertical-align: top;
+}
+
+.retro-meta td:first-child {
+  color: var(--r-text-muted);
+  width: 78px;
+}
+
+.retro-meta td:last-child {
+  text-align: right;
+  font-weight: 700;
+}
+
+.retro-meta tr:last-child td {
+  border-bottom: 0;
+}
+
+/* --- Two-column body grid --- */
+
+.retro-grid {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 24px 18px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.retro-main {
+  min-width: 0;
+}
+
+.retro-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 18px;
+}
+
+/* --- TOC --- */
+
+.retro-toc {
+  border: 1px solid var(--r-rule);
+  background: var(--r-panel);
+  padding: 12px 16px 14px;
+  margin-bottom: 22px;
+  font-family: var(--r-mono);
+}
+
+.retro-toc-label {
+  font-size: 11px;
+  color: var(--r-text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.retro-toc-list {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 12.5px;
+  line-height: 1.8;
+  font-family: var(--r-sans);
+}
+
+.retro-toc-list a {
+  color: var(--r-link);
+}
+
+.retro-toc-list a:hover {
+  color: var(--r-accent);
+}
+
+/* --- Sections --- */
+
+.retro-section {
+  margin-bottom: 22px;
+}
+
+.retro-section p {
+  font-size: 13px;
+  margin: 0 0 12px 0;
+  color: var(--r-text);
+}
+
+.retro-section em {
+  font-style: italic;
+  color: var(--r-text);
+}
+
+.retro-section strong {
+  font-weight: 700;
+}
+
+.retro-h2 {
+  font-family: var(--r-sans);
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 14px 0;
+  color: var(--r-text);
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--r-accent);
+  display: inline-block;
+  padding-right: 12px;
+}
+
+.retro-hr {
+  border: 0;
+  border-top: 1px dashed var(--r-rule);
+  margin: 26px 0;
+  height: 0;
+}
+
+.retro-small {
+  font-size: 11.5px;
+  color: var(--r-text-muted);
+  font-family: var(--r-sans);
+}
+
+/* --- Tables (the heart of the spec-doc aesthetic) --- */
+
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--r-rule);
+  font-size: 12.5px;
+  margin: 4px 0 16px 0;
+  background: var(--r-bg);
+  font-family: var(--r-sans);
+}
+
+.retro-table th {
+  background: var(--r-panel-alt);
+  border: 1px solid var(--r-rule);
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-text);
+}
+
+.retro-table td {
+  border: 1px solid var(--r-rule);
+  padding: 6px 10px;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.retro-table tbody tr:nth-child(even) {
+  background: var(--r-bg-alt);
+}
+
+.retro-table code {
+  font-family: var(--r-mono);
+  font-size: 12px;
+  background: transparent;
+  padding: 0;
+  color: var(--r-accent-deep);
+  font-weight: 700;
+}
+
+/* Acronym table — special highlight on the AAO row */
+
+.retro-acro {
+  font-family: var(--r-mono);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.retro-acro-new {
+  color: var(--r-accent);
+  font-size: 14px;
+}
+
+.retro-acronym-table-new {
+  background: var(--r-accent-soft) !important;
+  position: relative;
+}
+
+.retro-acronym-table-new td {
+  border-color: var(--r-accent);
+  border-top-width: 1px;
   font-weight: 600;
 }
 
-.aov-value.win {
-  color: var(--accent);
+.retro-acronym-table-new td:first-child::after {
+  content: ' [NEW]';
+  font-family: var(--r-mono);
+  font-size: 9px;
+  color: var(--r-accent-deep);
+  letter-spacing: 0.08em;
+  margin-left: 4px;
+  vertical-align: top;
 }
 
-@media (max-width: 800px) {
-  .split {
+/* AOV table — winner row gets the accent treatment */
+
+.retro-aov-win {
+  background: var(--r-accent-soft) !important;
+}
+
+.retro-aov-win td {
+  font-weight: 600;
+}
+
+.retro-aov-win strong {
+  color: var(--r-accent-deep);
+  font-size: 14px;
+}
+
+.retro-aov-table td:last-child,
+.retro-acronym-table td:nth-child(2) {
+  font-family: var(--r-mono);
+}
+
+/* Mapping table — keep the right column mono */
+.retro-mapping-table td:last-child {
+  text-align: left;
+}
+
+.retro-mapping-table td:last-child code {
+  font-size: 12px;
+}
+
+.retro-endpoints-table td:nth-child(1),
+.retro-endpoints-table td:nth-child(2) {
+  font-family: var(--r-mono);
+  white-space: nowrap;
+  width: 1%;
+}
+
+.retro-endpoints-table td:nth-child(2) {
+  background: var(--r-panel);
+}
+
+/* --- Callout (field note / info / success) --- */
+
+.retro-callout {
+  background: var(--r-postit);
+  border: 1px solid var(--r-rule);
+  border-left: 3px solid var(--r-accent);
+  padding: 12px 14px;
+  font-size: 12.5px;
+  margin: 0 0 14px 0;
+}
+
+.retro-callout-label {
+  font-family: var(--r-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--r-accent-deep);
+  margin-bottom: 6px;
+}
+
+.retro-callout p {
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.retro-callout-success {
+  background: #f0f7df;
+  border-left-color: #5b8a2c;
+}
+
+.retro-callout-success::before {
+  content: '✓ ';
+  color: #5b8a2c;
+  font-weight: 700;
+}
+
+/* --- Steps (numbered integration walkthrough) --- */
+
+.retro-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+  border: 1px solid var(--r-rule-soft);
+  background: var(--r-panel);
+  padding: 10px 12px;
+}
+
+.retro-step-num {
+  font-family: var(--r-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--r-accent);
+  letter-spacing: 0.08em;
+  padding-top: 2px;
+}
+
+.retro-step-title {
+  font-family: var(--r-sans);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.retro-step-body {
+  min-width: 0;
+}
+
+.retro-step-note {
+  font-size: 11.5px;
+  color: var(--r-text-muted);
+  margin: 6px 0 0 0;
+}
+
+.retro-step-note code {
+  font-size: 11.5px;
+  background: var(--r-panel-alt);
+  padding: 1px 4px;
+  font-family: var(--r-mono);
+}
+
+/* --- Code blocks --- */
+
+.retro-code {
+  background: var(--r-panel-alt);
+  border: 1px solid var(--r-rule);
+  border-radius: 0;
+  padding: 10px 12px;
+  font-family: var(--r-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--r-text);
+  overflow-x: auto;
+  margin: 4px 0 0 0;
+  white-space: pre;
+}
+
+.retro-code code {
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.retro-section > .retro-code {
+  margin: 14px 0;
+}
+
+/* --- Inline code (in body copy) --- */
+
+.retro-section code {
+  background: var(--r-panel-alt);
+  font-family: var(--r-mono);
+  font-size: 12px;
+  padding: 1px 5px;
+  border: 1px solid var(--r-rule-soft);
+  border-radius: 0;
+  color: var(--r-accent-deep);
+}
+
+/* --- Right rail --- */
+
+.retro-card {
+  background: var(--r-panel);
+  border: 1px solid var(--r-rule);
+}
+
+.retro-card-header {
+  font-family: var(--r-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--r-bg);
+  background: var(--r-text);
+  padding: 4px 10px;
+}
+
+.retro-card-quiet .retro-card-header {
+  background: var(--r-text-muted);
+}
+
+.retro-card-body {
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--r-text);
+}
+
+.retro-card-body p {
+  margin: 0;
+}
+
+.retro-card-body-mono {
+  font-family: var(--r-mono);
+  font-size: 11.5px;
+}
+
+.retro-linklist {
+  list-style: none;
+  padding: 8px 12px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.retro-linklist li {
+  padding: 2px 0;
+  line-height: 1.55;
+}
+
+.retro-linklist a {
+  color: var(--r-link);
+}
+
+.retro-linklist-plain {
+  font-family: var(--r-mono);
+  font-size: 11.5px;
+  color: var(--r-text);
+}
+
+.retro-linklist-numbered {
+  list-style: decimal inside;
+  padding: 10px 14px 12px 14px;
+  font-size: 11.5px;
+  color: var(--r-text-muted);
+}
+
+/* --- Post-it disclaimer --- */
+
+.retro-postit {
+  position: relative;
+  background: var(--r-postit);
+  padding: 16px 14px 14px 14px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--r-text);
+  box-shadow: 1px 2px 0 var(--r-postit-shadow);
+  font-family: var(--r-sans);
+  transform: rotate(-1deg);
+  margin: 4px 6px;
+  border: 1px solid rgba(180, 160, 0, 0.3);
+}
+
+.retro-postit::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 70px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(180, 160, 0, 0.25);
+  border-bottom: 0;
+}
+
+.retro-postit-label {
+  font-family: var(--r-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--r-accent-deep);
+  margin-bottom: 8px;
+}
+
+.retro-postit p {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+}
+
+.retro-postit p:last-child {
+  margin-bottom: 0;
+}
+
+.retro-postit a {
+  color: var(--r-accent-deep);
+  font-weight: 700;
+}
+
+/* --- Footer --- */
+
+.retro-footer {
+  max-width: 940px;
+  margin: 32px auto 0;
+  padding: 14px 18px 0;
+  border-top: 1px solid var(--r-rule);
+  font-family: var(--r-mono);
+  font-size: 11px;
+  color: var(--r-text-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.retro-footer a {
+  color: var(--r-link);
+}
+
+.retro-footer-mono {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* --- End-of-page CTA --- */
+
+.retro-cta-end {
+  margin-top: 8px;
+}
+
+.retro-cta-end .retro-cta-row {
+  margin-top: 4px;
+}
+
+/* --- Override the bubble style for .retro-landing's chat (IRC-flavored) --- */
+
+.retro-landing ~ .agent-chat,
+body:has(.retro-landing) .agent-chat {
+  /* Selector won't always match; use unconditional override below to be safe.
+     The /demo page does not render AgentChat so this is safe globally. */
+}
+
+/* Unconditional IRC restyle — AgentChat is only on the homepage */
+
+.agent-chat {
+  font-family: 'Courier New', Courier, 'Lucida Console', monospace;
+  color: #000;
+}
+
+.agent-chat-label {
+  color: #ff4500;
+  opacity: 1;
+  font-weight: 700;
+  border-bottom: 1px dashed #b8b6a8;
+  padding-bottom: 4px;
+}
+
+.agent-chat-stream {
+  gap: 2px;
+  min-height: 140px;
+}
+
+.bubble {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 2px 0 !important;
+  max-width: none !important;
+  display: block !important;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #000 !important;
+  align-self: stretch !important;
+  animation: irc-line-in 0.18s ease-out;
+}
+
+.bubble-tag {
+  font-size: 11px !important;
+  letter-spacing: 0 !important;
+  text-transform: lowercase !important;
+  opacity: 1 !important;
+  display: inline !important;
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.bubble-tag::before {
+  content: '<';
+  opacity: 0.7;
+}
+
+.bubble-tag::after {
+  content: '>';
+  opacity: 0.7;
+}
+
+.bubble-text {
+  font-size: 11px !important;
+  display: inline !important;
+}
+
+.bubble-buyer .bubble-tag {
+  color: #555;
+}
+
+.bubble-merchant .bubble-tag {
+  color: #ff4500;
+}
+
+.bubble-merchant .bubble-text {
+  color: #b03000;
+}
+
+@keyframes irc-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive: collapse rail and chat margins on smaller screens --- */
+
+@media (max-width: 1180px) {
+  .retro-grid {
     grid-template-columns: 1fr;
   }
 
-  .split-divider {
+  .retro-rail {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  .retro-header-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .retro-mascot,
+  .retro-header-right {
     display: none;
   }
 
-  h1 {
-    font-size: 40px;
+  .retro-statusbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
   }
 
-  h2 {
-    font-size: 26px;
+  .retro-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .retro-btn {
+    text-align: center;
+  }
+
+  .retro-step {
+    grid-template-columns: 1fr;
+  }
+
+  .retro-acronym-table {
+    font-size: 11px;
+  }
+
+  .retro-acronym-table th,
+  .retro-acronym-table td {
+    padding: 4px 6px;
   }
 }
